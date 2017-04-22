@@ -40,8 +40,10 @@ group :test do
   gem 'shoulda-matchers', '~> 3.1'
   # a library for generating fake data.
   gem 'faker'
-  # strategies for cleaning database in Ruby
+  # strategies for cleaning database in Ruby.
   gem 'database_cleaner'
+  # an IRB alternative and runtime developer console.
+  gem 'pry'
 end
 
 group :development do
