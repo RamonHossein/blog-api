@@ -4,7 +4,7 @@ module V1
 
     # GET / posts
     def index
-      @posts = current_user.posts.order('created_at DESC')
+      @posts = current_user.posts.paginate(page: params[:page], per_page: 20).order('created_at DESC')
       json_response(@posts)
     end
 

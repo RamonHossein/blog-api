@@ -22,9 +22,12 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'jwt'
 # ActiveModel::Serializer implementation and Rails hooks.
 gem 'active_model_serializers', '~> 0.10.0'
+# gem 'will_paginate' is a pagination library.
+gem 'will_paginate', '~> 3.1.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+# a library for generating fake data.
+gem 'faker'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
@@ -40,8 +43,6 @@ group :test do
   gem 'factory_girl_rails', '~> 4.0'
   # shoulda-matcher provides Rspec and Minitest compatible one liners that test common Rails functionality.
   gem 'shoulda-matchers', '~> 3.1'
-  # a library for generating fake data.
-  gem 'faker'
   # strategies for cleaning database in Ruby.
   gem 'database_cleaner'
   # an IRB alternative and runtime developer console.
