@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   # GET / posts
   def index
-    @posts = Post.all.order('created_at DESC')
+    @posts = current_user.posts.order('created_at DESC')
     json_response(@posts)
   end
 
@@ -14,7 +14,7 @@ class PostsController < ApplicationController
 
   # POST / posts
   def create
-    @post =Post.create!(post_params)
+    @post = current_user.posts.create!(post_params)
     json_response(@post, :created)
   end
 
@@ -33,7 +33,7 @@ class PostsController < ApplicationController
   private
 
     def post_params
-      params.permit(:title, :content, :created_by)
+      params.permit(:title, :content)
     end
 
     def set_post

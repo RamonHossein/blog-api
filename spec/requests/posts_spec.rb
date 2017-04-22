@@ -2,12 +2,14 @@ require 'rails_helper'
 
 RSpec.describe 'Posts API', type: :request do
   # initialize tests data
-  let!(:posts) { create_list(:post, 10) }
+  let(:user) { create(:user) }
+  let!(:posts) { create_list(:post, 10, created_by: user.id) }
   let(:post_id) { posts.first.id }
+  let(:headers) { valid_headers }
 
   # test suite for GET / posts
   describe "GET / posts" do
-    before { get "/posts" }
+    before { get "/posts", params: {}, headers: headers }
 
     it "returns status code 200" do
       expect(response).to have_http_status(200)
@@ -21,7 +23,7 @@ RSpec.describe 'Posts API', type: :request do
 
   # test suite for GET / posts / :id
   describe "GET / posts / :id" do
-    before { get "/posts/#{post_id}" }
+    before { get "/posts/#{post_id}", params: {}, headers: headers }
 
     context "when the record exist" do
       it "returns status code 200" do
@@ -49,11 +51,11 @@ RSpec.describe 'Posts API', type: :request do
 
   # test suite for POST / posts
   describe "POST / posts" do
-    let(:valid_attributes) { { title: "title number one", content: "content about something", created_by: "1" } }
-    let(:invalid_attributes) { { title: "title number one", created_by: "1"} }
+    let(:valid_attributes) { { title: "title number one", content: "content about something", created_by: "1" }.to_json }
+    let(:invalid_attributes) { { title: "title number one", created_by: "1"}.to_json }
 
     context "when the request is valid" do
-      before { post "/posts", params: valid_attributes }
+      before { post "/posts", params: valid_attributes, headers: headers }
 
       it "returns status code 201" do
         expect(response).to have_http_status(201)
@@ -65,7 +67,7 @@ RSpec.describe 'Posts API', type: :request do
     end
 
     context "when the request is invalid" do
-      before { post "/posts", params: invalid_attributes }
+      before { post "/posts", params: invalid_attributes, headers: headers }
 
       it "returns status code 422" do
         expect(response).to have_http_status(422)
@@ -79,10 +81,10 @@ RSpec.describe 'Posts API', type: :request do
 
   # test suite for PUT / posts / :id
   describe "PUT / posts / :id" do
-    let(:valid_attributes) { { title: "title number two" } }
+    let(:valid_attributes) { { title: "title number two" }.to_json }
 
     context "when the record exists" do
-      before { put "/posts/#{post_id}", params: valid_attributes }
+      before { put "/posts/#{post_id}", params: valid_attributes, headers: headers }
 
       it "returns status code 204" do
         expect(response).to have_http_status(204)
@@ -96,7 +98,7 @@ RSpec.describe 'Posts API', type: :request do
 
   # test suite for DELETE / posts / :id
   describe "DELETE / posts / :id" do
-    before { delete "/posts/#{post_id}" }
+    before { delete "/posts/#{post_id}", params: {}, headers: headers }
 
     it "returns status code 204" do
       expect(response).to have_http_status(204)

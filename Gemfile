@@ -17,8 +17,9 @@ gem 'puma', '~> 3.0'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
+gem 'jwt'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -39,8 +40,10 @@ group :test do
   gem 'shoulda-matchers', '~> 3.1'
   # a library for generating fake data.
   gem 'faker'
-  # strategies for cleaning database in Ruby
+  # strategies for cleaning database in Ruby.
   gem 'database_cleaner'
+  # an IRB alternative and runtime developer console.
+  gem 'pry'
 end
 
 group :development do
