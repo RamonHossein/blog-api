@@ -1,24 +1,12 @@
-# README
+# Blog API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Foi criado um projeto, no qual implementamos uma API utilizando o framework Ruby on Rails em conjunto com a linguagem Rails 5.
 
-Things you may want to cover:
+## Criado por
 
-* Ruby version
+[RamonHossein](https://github.com/RamonHossein)
 
-* System dependencies
+# Licença
 
-* Configuration
+A gem está disponível como código aberto sob os termos da [MIT License](http://opensource.org/licenses/MIT).
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
